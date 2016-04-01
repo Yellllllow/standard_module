@@ -1,0 +1,14 @@
+<p class="wb_h1">TCheck</p>
+The checkbox field is an enhanced version of the native browser checkbox and is great for enabling your user to choose one or more items from a set (for example choosing toppings for a pizza order). WebBuilder encapsulate Sencha Touch Ext.field.Checkbox to this control.<br><br>
+<p class="wb_h2">1. Properties</p>
+<hr>
+<b>autoCreate</b><br>
+Indicates whether to create the object instance or config object.<br>
+<hr>
+<b>tagProperties</b><br>
+Any text to be appended to the object's config options directly.<br><br>
+<p class="wb_h2">2. Events</p>
+<hr>
+<b>tagEvents</b><br>
+Any text to be appended to the object's listeners directly.<br><br>
+<p class="wb_h2">Others please refer to Sencha Touch docs Ext.field.Checkbox</p>

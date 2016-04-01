@@ -1,0 +1,225 @@
+create table wb_bbs_file
+(
+  file_id varchar(12) not null primary key,
+  create_date datetime not null,
+  file_name varchar(255) not null,
+  file_size numeric(10) not null,
+  file_content longblob
+) engine=innodb default charset=utf8;
+
+create table wb_bbs_post
+(
+  bbs_id varchar(12) not null,
+  post_date datetime not null,
+  post_user varchar(12) not null,
+  post_id varchar(12) not null,
+  content longtext
+) engine=innodb default charset=utf8;
+create index wb_bbs_post_idx1 on wb_bbs_post (bbs_id, post_date);
+create index wb_bbs_post_idx2 on wb_bbs_post(post_user);
+
+create table wb_bbs_title
+(
+  bbs_id varchar(12) not null primary key,
+  title varchar(255) not null,
+  set_top numeric(1) not null,
+  create_date datetime not null,
+  create_user varchar(12) not null,
+  reply_count numeric(8) not null,
+  view_count numeric(8) not null,
+  post_date datetime not null,
+  post_user varchar(12) not null,
+  content longtext
+) engine=innodb default charset=utf8;
+create index wb_bbs_title_idx1 on wb_bbs_title(set_top, post_date);
+create index wb_bbs_title_idx2 on wb_bbs_title(create_user);
+create index wb_bbs_title_idx3 on wb_bbs_title(post_user);
+
+create table wb_cust
+(
+  cust_id varchar(12) not null primary key,
+  cust_no varchar(5) not null,
+  company varchar(50),
+  addr varchar(50),
+  country varchar(20),
+  tax_rate numeric(6,2),
+  invoice_date datetime,
+  remark longtext
+) engine=innodb default charset=utf8;
+
+create table wb_dual
+(
+  dmy numeric(1)
+) engine=innodb default charset=utf8;
+
+create table wb_key
+(
+  key_id varchar(12) not null primary key,
+  key_type varchar(50) not null,
+  key_name varchar(50) not null,
+  key_value varchar(200) not null,
+  key_pid varchar(12),
+  key_sort float,
+  key_is_leaf int
+) engine=innodb default charset=utf8;
+create index wb_key_idx on wb_key(key_type);
+
+create table wb_log
+(
+  log_date datetime not null,
+  user_name varchar(50) not null,
+  ip varchar(50) not null,
+  log_type numeric(1) not null,
+  msg varchar(255) not null
+) engine=innodb default charset=utf8;
+create index wb_log_idx on wb_log(log_date);
+
+create table wb_meta
+(
+  meta_name varchar(30) not null primary key,
+  meta_type varchar(50) not null,
+  meta_content longtext not null,
+  order_index numeric(6) not null
+) engine=innodb default charset=utf8;
+create index wb_meta_idx on wb_meta(order_index);
+
+create table wb_module
+(
+  module_id varchar(12) not null primary key,
+  parent_id varchar(12) not null,
+  module_content longtext,
+  display_name varchar(255),
+  display_icon varchar(50),
+  is_hidden numeric(1),
+  new_win numeric(1),
+  create_user varchar(12),
+  create_date datetime,
+  last_modify_user varchar(12),
+  last_modify_date datetime,
+  order_index numeric(8)
+) engine=innodb default charset=utf8;
+create index wb_module_idx on wb_module(parent_id, order_index);
+
+create table wb_module_his
+(
+  his_title varchar(100) not null,
+  module_id varchar(12) not null,
+  parent_id varchar(12) not null,
+  module_content longtext,
+  display_name varchar(255),
+  display_icon varchar(50),
+  is_hidden numeric(1),
+  new_win numeric(1),
+  create_user varchar(12),
+  create_date datetime,
+  last_modify_user varchar(12),
+  last_modify_date datetime,
+  order_index numeric(8)
+) engine=innodb default charset=utf8;
+create index wb_module_his_idx on wb_module_his(his_title);
+
+create table wb_module_role
+(
+  module_id varchar(12) not null,
+  role_id varchar(12) not null
+) engine=innodb default charset=utf8;
+create index wb_module_role_idx on wb_module_role(module_id);
+
+create table wb_resource
+(
+  res_id varchar(200) not null primary key,
+  res_content longblob
+) engine=innodb default charset=utf8;
+
+create table wb_role
+(
+  role_id varchar(12) not null primary key,
+  parent_id varchar(12) not null,
+  role_name varchar(50) not null
+) engine=innodb default charset=utf8;
+
+create table wb_sale
+(
+  rcv_date datetime not null,
+  txn_id varchar(20) not null,
+  payer_email varchar(127),
+  mc_gross numeric(9,2),
+  mc_fee numeric(9,2),
+  mc_currency varchar(10),
+  first_name varchar(64),
+  last_name varchar(64),
+  payment_date varchar(50),
+  address_country varchar(64),
+  address_state varchar(40),
+  address_city varchar(40),
+  address_street varchar(200),
+  item_name varchar(127),
+  receiver_email varchar(127),
+  reg_code varchar(20),
+  user_count numeric(7),
+  opt_support numeric(1)
+) engine=innodb default charset=utf8;
+create index wb_sale_idx1 on wb_sale(rcv_date);
+create index wb_sale_idx2 on wb_sale(reg_code);
+
+create table wb_sysinfo
+(
+  rcv_date datetime not null,
+  sys_title varchar(200),
+  sys_ip varchar(50), 
+  sys_sn varchar(20), 
+  sys_ctx varchar(200)
+) engine=innodb default charset=utf8;
+create index wb_sysinfo_idx on wb_sysinfo(rcv_date);
+
+create table wb_task
+(
+  task_id varchar(12) not null primary key,
+  task_name varchar(100) not null,
+  interval_type numeric(1) not null,
+  interval_express varchar(10) not null,
+  class_name varchar(255) not null,
+  begin_date datetime,
+  end_date datetime,
+  status numeric(1) not null,
+  remark varchar(255)
+) engine=innodb default charset=utf8;
+
+create table wb_user
+(
+  user_id varchar(12) not null primary key,
+  user_name varchar(50) not null,
+  display_name varchar(100) not null,
+  password varchar(32) not null,
+  status numeric(1) not null,
+  create_date datetime not null,
+  login_times numeric(9) not null,
+  email varchar(100),
+  use_lang varchar(10),
+  last_login datetime,
+  sso_id varchar(36)
+) engine=innodb default charset=utf8;
+create unique index wb_user_unq on wb_user(user_name);
+create index wb_user_idx on wb_user(status);
+
+create table wb_user_role
+(
+  user_id varchar(12) not null,
+  role_id varchar(12) not null
+) engine=innodb default charset=utf8;
+create index wb_user_role_idx on wb_user_role(user_id);
+
+create table wb_value
+(
+  val_id varchar(200) not null primary key,
+  val_content varchar(255)
+) engine=innodb default charset=utf8;
+
+create table wb_var
+(
+  var_id varchar(12) not null primary key,
+  parent_id varchar(12) not null,
+  var_name varchar(50) not null,
+  var_value varchar(255),
+  is_var numeric(1)
+) engine=innodb default charset=utf8;

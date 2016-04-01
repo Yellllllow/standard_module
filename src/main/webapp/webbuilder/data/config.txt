@@ -1,0 +1,1 @@
+{"serialNumber":"","charset":"","startTask":true,"log":true,"cacheEnabled":true,"initMethod":"","printError":true,"finalMethod":"","cacheGzipMinSize":6144,"respGzipMinSize":10240,"serverId":"2","cacheCheckModified":true,"dbType":"mysql","jndi":"java:comp/env/jdbc/mysql_ds","fileNameCharset":""}

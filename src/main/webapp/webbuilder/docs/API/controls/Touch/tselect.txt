@@ -1,0 +1,23 @@
+<p class="wb_h1">TSelect</p>
+Simple Select field wrapper. WebBuilder encapsulate Sencha Touch Ext.field.Select to this control.<br><br>
+<p class="wb_h2">1. Properties</p>
+<hr>
+<b>autoCreate</b><br>
+Indicates whether to create the object instance or config object.<br>
+<hr>
+<b>keyName</b><br>
+A type name defined in <a href="javascript:openTopic('@systool/kvEditor.txt','Key Value Editor')">Key Value Editor</a>. The defined items will be converted to options.<br>
+<hr>
+<b>keySortType</b><br>
+Indicates how to sort the options defined by keyName.<br>
+keyAsNumber - sort key by number<br>
+keyAsString - sort key alphabetically<br>
+value - sort value alphabetically<br>
+<hr>
+<b>tagProperties</b><br>
+Any text to be appended to the object's config options directly.<br><br>
+<p class="wb_h2">2. Events</p>
+<hr>
+<b>tagEvents</b><br>
+Any text to be appended to the object's listeners directly.<br><br>
+<p class="wb_h2">Others please refer to Sencha Touch docs Ext.field.Select</p>

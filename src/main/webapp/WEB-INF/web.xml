@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>style</display-name>
+  <welcome-file-list>
+    <welcome-file>main</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>webapp.root</param-value>
+  </context-param>
+  <servlet>
+    <description>System Core Service</description>
+    <display-name>main</display-name>
+    <servlet-name>main</servlet-name>
+    <servlet-class>com.webbuilder.common.Main</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>main</servlet-name>
+    <url-pattern>/main</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>main</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Task Service Initializer</description>
+    <display-name>taskservice</display-name>
+    <servlet-name>taskservice</servlet-name>
+    <servlet-class>com.webbuilder.common.TaskService</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+</web-app>

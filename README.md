@@ -1,2 +1,1 @@
-# standard_module
-鎵嬫満鑺傜洰App鍚庡彴绠＄悊
+yxg 依修哥管理平台及服务接口
